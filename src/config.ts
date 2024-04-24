@@ -63,17 +63,17 @@ const config = {
         {
           icon: Twitter,
           title: "Twitter",
-          href: "https://twitter.com/blvdmitry",
+          href: "https://twitter.com/mitch__malone",
         },
         {
           icon: GitHub,
           title: "GitHub",
-          href: "https://github.com/formaat-design",
+          href: "https://github.com/mitchmalone",
         },
         {
           icon: Figma,
           title: "Figma",
-          href: "https://www.figma.com/@reshaped",
+          href: "https://www.figma.com/@mitchmalone",
         },
       ],
     },
