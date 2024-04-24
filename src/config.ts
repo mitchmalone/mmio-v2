@@ -13,8 +13,8 @@ import {
 
 const config = {
   app: {
-    title: "Reshaped",
-    subtitle: "Blog starter kit",
+    title: "Mitch Malone",
+    subtitle: "Product Shaped Person",
     thumbnailUrl: "/img/logo.svg",
   },
   meta: {
