@@ -46,14 +46,24 @@ const config = {
       title: "Projects",
       items: [
         {
-          icon: Compass,
-          title: "Roamin' Amok",
-          href: "https://www.roaminamok.com/",
+          icon: Package,
+          title: "Reshaped",
+          href: "https://reshaped.so",
         },
         {
-          icon: Hexagon,
-          title: "Ramen Amok",
-          href: "https://ramenamok.com/",
+          icon: CheckSquare,
+          title: "Design System Checklist",
+          href: "https://www.designsystemchecklist.com",
+        },
+        {
+          icon: Mic,
+          title: "Design System Interviews",
+          href: "https://reshaped.so/blog",
+        },
+        {
+          icon: Briefcase,
+          title: "Formaat Design",
+          href: "https://formaat.design",
         },
       ],
     },
@@ -61,49 +71,19 @@ const config = {
       title: "Online",
       items: [
         {
-          icon: LinkedIn,
-          title: "LinkedIn",
-          href: "https://www.linkedin.com/in/mitchmalone/",
-        },
-        {
-          icon: Instagram,
-          title: "Instagram",
-          href: "https://instagram.com/mitchmalone",
-        },
-        {
           icon: Twitter,
-          title: "X",
-          href: "https://x.com/mitch__malone",
+          title: "Twitter",
+          href: "https://twitter.com/blvdmitry",
         },
         {
           icon: GitHub,
           title: "GitHub",
-          href: "https://github.com/mitchmalone",
+          href: "https://github.com/formaat-design",
         },
         {
           icon: Figma,
           title: "Figma",
-          href: "https://www.figma.com/@mitchmalone",
-        },
-        {
-          icon: ,
-          title: "",
-          href: "",
-        },
-        {
-          icon: ,
-          title: "",
-          href: "",
-        },
-        {
-          icon: ,
-          title: "",
-          href: "",
-        },
-        {
-          icon: ,
-          title: "",
-          href: "",
+          href: "https://www.figma.com/@reshaped",
         },
       ],
     },
