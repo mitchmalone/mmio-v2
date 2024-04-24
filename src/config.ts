@@ -46,24 +46,14 @@ const config = {
       title: "Projects",
       items: [
         {
-          icon: Package,
-          title: "Reshaped",
-          href: "https://reshaped.so",
+          icon: Compass,
+          title: "Roamin' Amok",
+          href: "https://www.roaminamok.com/",
         },
         {
-          icon: CheckSquare,
-          title: "Design System Checklist",
-          href: "https://www.designsystemchecklist.com",
-        },
-        {
-          icon: Mic,
-          title: "Design System Interviews",
-          href: "https://reshaped.so/blog",
-        },
-        {
-          icon: Briefcase,
-          title: "Formaat Design",
-          href: "https://formaat.design",
+          icon: Hexagon,
+          title: "Ramen Amok",
+          href: "https://ramenamok.com/",
         },
       ],
     },
