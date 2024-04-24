@@ -61,9 +61,19 @@ const config = {
       title: "Online",
       items: [
         {
+          icon: LinkedIn,
+          title: "LinkedIn",
+          href: "https://www.linkedin.com/in/mitchmalone/",
+        },
+        {
+          icon: Instagram,
+          title: "Instagram",
+          href: "https://instagram.com/mitchmalone",
+        },
+        {
           icon: Twitter,
-          title: "Twitter",
-          href: "https://twitter.com/mitch__malone",
+          title: "X",
+          href: "https://x.com/mitch__malone",
         },
         {
           icon: GitHub,
@@ -74,6 +84,26 @@ const config = {
           icon: Figma,
           title: "Figma",
           href: "https://www.figma.com/@mitchmalone",
+        },
+        {
+          icon: ,
+          title: "",
+          href: "",
+        },
+        {
+          icon: ,
+          title: "",
+          href: "",
+        },
+        {
+          icon: ,
+          title: "",
+          href: "",
+        },
+        {
+          icon: ,
+          title: "",
+          href: "",
         },
       ],
     },
