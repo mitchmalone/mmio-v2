@@ -2,11 +2,11 @@ import React from "react";
 import NextLink from "next/link";
 import { MDXRemoteProps, compileMDX } from "next-mdx-remote/rsc";
 import type { MDXComponents } from "mdx/types";
-import { View, Text, Link, Divider, Image } from "reshaped";
-import ArticleHeading from "../../components/ArticleHeading";
-import ArticleCode from "../../components/ArticleCode";
-import ArticleBio from "../../components/ArticleBio";
-import Article from "../../components/Article";
+import { Text, Link, Divider, Image } from "reshaped";
+import ArticleHeading from "@/components/ArticleHeading";
+import ArticleCode from "@/components/ArticleCode";
+import ArticleBio from "@/components/ArticleBio";
+import Article from "@/components/Article";
 import s from "./MdxContent.module.css";
 
 const components: MDXComponents = {
@@ -60,7 +60,7 @@ const components: MDXComponents = {
   pre: ({ children }) => {
     if (!React.isValidElement(children)) return null;
     const { children: code, className } = children.props;
-    const language = className.replace("langugage-", "");
+    const language = className ? className.replace("langugage-", "") : "js";
 
     return (
       <div>

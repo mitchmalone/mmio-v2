@@ -2,27 +2,20 @@
 
 import { ReactNode } from "react";
 import { View, ScrollArea, Hidden } from "reshaped";
-import type { SubmenuItemsMap } from "../../types";
-import useArticleNavigation from "../../hooks/useArticleNavigation";
 
 type Props = {
+  noPadding: boolean;
   children: ReactNode;
-  availableRoutes: SubmenuItemsMap;
 };
 
 const LayoutContent = (props: Props) => {
-  const { children, availableRoutes } = props;
-  const { isArticle, pathname } = useArticleNavigation(availableRoutes);
+  const { noPadding, children } = props;
 
   return (
-    <Hidden hide={{ s: !isArticle, l: false }}>
-      {(className) => (
-        <View grow className={className} height="100dvh">
-          <ScrollArea scrollbarDisplay="hover" key={pathname}>
-            {children}
-          </ScrollArea>
-        </View>
-      )}
+    <Hidden hide={{ s: true, l: false }}>
+      <View grow height="100dvh" padding={noPadding ? 0 : 4}>
+        <ScrollArea scrollbarDisplay="hover">{children}</ScrollArea>
+      </View>
     </Hidden>
   );
 };

@@ -12,7 +12,7 @@ import {
   Button,
   useToggle,
 } from "reshaped";
-import LayoutMenuModal from "../../components/LayoutMenuModal";
+import LayoutMenuModal from "@/components/LayoutMenuModal";
 import s from "./Article.module.css";
 
 type Props = {
@@ -41,7 +41,7 @@ const Article = (props: Props) => {
           }
         });
       },
-      { rootMargin: `-${headerRef.current.clientHeight}px` },
+      { rootMargin: `-${headerRef.current.clientHeight}px` }
     );
 
     observer.observe(titleRef.current);

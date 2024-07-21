@@ -17,12 +17,12 @@ import {
   Hidden,
 } from "reshaped";
 import { ArrowUpRight, Sun, Moon } from "react-feather";
-import config from "../../config";
+import config from "@/config";
 
 const Item = (
   props: {
     href: string;
-  } & Pick<MenuItemProps, "icon" | "children">,
+  } & Pick<MenuItemProps, "icon" | "children">
 ) => {
   const { icon, href, children } = props;
   const pathname = usePathname();
@@ -32,6 +32,7 @@ const Item = (
     <MenuItem.Aligner>
       <NextLink href={href} legacyBehavior passHref>
         <MenuItem
+          className="ct--rounded-corners"
           roundedCorners
           icon={icon}
           selected={

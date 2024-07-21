@@ -1,7 +1,8 @@
+import React from "react";
 import LayoutContent from "@/components/LayoutContent";
 import { Container, View, Text } from "reshaped";
 
-export default function Home() {
+const Page = () => {
   return (
     <LayoutContent noPadding>
       <Container width="760px">
@@ -13,11 +14,13 @@ export default function Home() {
         >
           <View gap={1}>
             <Text as="h1" variant="featured-1" weight="bold">
-              Hello there!
+              Stack
             </Text>
           </View>
         </View>
       </Container>
     </LayoutContent>
   );
-}
+};
+
+export default Page;

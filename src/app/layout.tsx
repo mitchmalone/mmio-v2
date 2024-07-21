@@ -1,11 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { View, Hidden } from "reshaped";
-import App from "../components/App";
-import LayoutMenu from "../components/LayoutMenu";
-import LayoutSubmenu from "../components/LayoutSubmenu";
-import LayoutContent from "../components/LayoutContent";
-import { getArticlesList } from "../utilities/articles.server";
-import config from "../config";
+import { Hidden, View } from "reshaped";
+import config from "@/config";
+import App from "@/components/App";
+import LayoutMenu from "@/components/LayoutMenu";
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.meta.url),
@@ -44,11 +41,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
-  const availableRoutes = getArticlesList();
-
+}>) {
   return (
     <html lang="en" data-rs-theme="blog" suppressHydrationWarning>
       <head>
@@ -77,23 +72,16 @@ export default function RootLayout({
             overflow="hidden"
           >
             <Hidden hide={{ s: true, l: false }}>
-              {(className) => (
-                <View
-                  width={{ s: "240px", xl: "287px" }}
-                  height="100%"
-                  backgroundColor="elevation-base"
-                  className={className}
-                >
-                  <LayoutMenu />
-                </View>
-              )}
+              <View
+                width={{ s: "240px", xl: "287px" }}
+                height="100%"
+                backgroundColor="elevation-base"
+              >
+                <LayoutMenu />
+              </View>
             </Hidden>
 
-            <LayoutSubmenu availableRoutes={availableRoutes} />
-
-            <LayoutContent availableRoutes={availableRoutes}>
-              {children}
-            </LayoutContent>
+            {children}
           </View>
         </App>
       </body>

@@ -1,39 +1,24 @@
-import type { IconProps } from "reshaped";
-
-export type MenuItem = {
-  icon?: IconProps["svg"];
+export type ArticleInfo = {
+  id: string;
   title: string;
-  href: string;
-};
-
-type MenuSection = {
-  title: string;
-  items: MenuItem[];
-};
-
-export type Menu = Array<MenuItem | MenuSection>;
-
-export type SubmenuItem = {
-  title: string;
-  href: string;
-  created: Date;
-};
-
-export type SubmenuItemsMap = Record<string, SubmenuItem[] | undefined>;
-
-export type Config = {
-  app: {
-    title: string;
-    subtitle?: string;
-    thumbnailUrl?: string;
-  };
-  meta: {
-    url: string;
-    title: string;
-    description: string;
-    twitter?: {
-      username?: string;
-    };
-  };
-  menu: Menu;
+  subtitle: string;
+  author: string;
+  publication_id: string;
+  published_at: Date;
+  last_modified_at: Date;
+  tags: string[];
+  topics: string[];
+  claps: number;
+  voters: number;
+  word_count: number;
+  responses_count: number;
+  reading_time: number;
+  url: string;
+  unique_slug: string;
+  image_url: string;
+  lang: string;
+  is_series: boolean;
+  is_locked: boolean;
+  is_shortform: boolean;
+  top_highlight: string;
 };

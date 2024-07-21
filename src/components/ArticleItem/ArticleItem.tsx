@@ -1,3 +1,5 @@
+"use client";
+
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { MenuItem, Text, View } from "reshaped";
@@ -15,7 +17,12 @@ const ArticleItem = (props: Props) => {
   return (
     <MenuItem.Aligner>
       <NextLink href={href} passHref legacyBehavior>
-        <MenuItem roundedCorners selected={href === pathname} color="neutral">
+        <MenuItem
+          className="ct--rounded-corners"
+          roundedCorners
+          selected={href === pathname}
+          color="neutral"
+        >
           <View gap={0.5}>
             <Text>{title}</Text>
             {date && (

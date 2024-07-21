@@ -1,0 +1,7 @@
+.ct--rounded-corners {
+  border-radius: 8px !important;
+}
+
+.ct--divider {
+  border-right: 1px solid var(--rs-color-border-neutral-faded);
+}
