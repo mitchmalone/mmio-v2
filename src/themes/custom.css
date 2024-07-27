@@ -5,3 +5,17 @@
 .ct--divider {
   border-right: 1px solid var(--rs-color-border-neutral-faded);
 }
+
+@media screen and (max-width: 1279px) {
+  .stacking {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .stacking > div:first-child {
+    position: absolute;
+    height: 45px !important;
+    border-bottom: 1px solid var(--rs-color-border-neutral-faded);
+    z-index: 10;
+  }
+}
