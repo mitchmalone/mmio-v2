@@ -38,7 +38,11 @@ export default async function Page({
           height="100%"
           backgroundColor="elevation-base"
         >
-          <ScrollArea scrollbarDisplay="hover" className="ct--divider">
+          <ScrollArea
+            scrollbarDisplay="hover"
+            className="ct--divider"
+            height="100vh"
+          >
             <View padding={{ s: 4, l: 6 }} paddingBlock={3} gap={6}>
               <View direction="row" gap={4} align="center">
                 <Hidden hide={{ s: false, l: true }}>
