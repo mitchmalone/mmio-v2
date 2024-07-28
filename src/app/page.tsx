@@ -1,6 +1,5 @@
 import LayoutContent from "@/components/LayoutContent";
 import LayoutSubmenu from "@/components/LayoutSubmenu";
-import config from "@/config";
 import { Container, View, Text } from "reshaped";
 
 export default function Home() {
