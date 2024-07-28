@@ -50,7 +50,7 @@ const LayoutSubmenu = ({ title = "", data = [] }: LayoutSubmenuProps) => {
                       <ArticleItem
                         key={articleHref}
                         title={article.title}
-                        date={new Date()}
+                        date={article.published_at}
                         href={articleHref}
                       />
                     );

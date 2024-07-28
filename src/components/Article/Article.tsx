@@ -14,16 +14,17 @@ import {
 } from "reshaped";
 import LayoutMenuModal from "@/components/LayoutMenuModal";
 import s from "./Article.module.css";
+import formatDate from "@/utils/date";
 
 type Props = {
   children: ReactNode;
   title?: string;
-  created?: Date;
+  date?: string;
   parentUrl?: string;
 };
 
 const Article = (props: Props) => {
-  const { children, title, created, parentUrl } = props;
+  const { children, title, date, parentUrl } = props;
   const { activate, deactivate, active } = useToggle();
   const titleRef = React.useRef<HTMLHeadingElement | null>(null);
   const headerRef = React.useRef<HTMLDivElement | null>(null);
@@ -41,7 +42,7 @@ const Article = (props: Props) => {
           }
         });
       },
-      { rootMargin: `-${headerRef.current.clientHeight}px` }
+      { rootMargin: `-${headerRef.current.clientHeight}px` },
     );
 
     observer.observe(titleRef.current);
@@ -100,13 +101,9 @@ const Article = (props: Props) => {
               >
                 {title}
               </Text>
-              {created && (
+              {date && (
                 <Text variant="body-3" color="neutral-faded">
-                  {created.toLocaleString("en-us", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
+                  {formatDate(date)}
                 </Text>
               )}
             </View>

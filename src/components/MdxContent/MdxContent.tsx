@@ -74,7 +74,7 @@ const CustomMDX = async (props: MDXRemoteProps & { parentUrl?: string }) => {
   const { source, parentUrl } = props;
   const { frontmatter, content } = await compileMDX<{
     title: string;
-    created: Date;
+    published_at: string;
   }>({
     source,
     options: { parseFrontmatter: true },
@@ -84,7 +84,7 @@ const CustomMDX = async (props: MDXRemoteProps & { parentUrl?: string }) => {
   return (
     <Article
       title={frontmatter.title}
-      created={frontmatter.created}
+      date={frontmatter.published_at}
       parentUrl={parentUrl}
     >
       {content}

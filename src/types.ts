@@ -4,8 +4,8 @@ export type ArticleInfo = {
   subtitle: string;
   author: string;
   publication_id: string;
-  published_at: Date;
-  last_modified_at: Date;
+  published_at: string; // YYYY-MM-DD HH:MM:SS
+  last_modified_at: string; // YYYY-MM-DD HH:MM:SS
   tags: string[];
   topics: string[];
   claps: number;
