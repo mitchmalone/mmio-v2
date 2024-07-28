@@ -3,8 +3,13 @@ import ArticleItem from "@/components/ArticleItem";
 import MdxContent from "@/components/MdxContent";
 import LayoutContent from "@/components/LayoutContent";
 import LayoutMenuModal from "@/components/LayoutMenuModal";
-import { getUserArticles, getArticleMarkdown } from "@/utils/medium_api";
+import {
+  getUserArticles,
+  getArticleMarkdown,
+  getArticleInfo,
+} from "@/utils/medium_api";
 import { ArticleInfo } from "@/types";
+import removeTitle from "@/utils/remove_title";
 
 export async function generateStaticParams() {
   const data: any = await getUserArticles();
@@ -21,6 +26,8 @@ export default async function Page({
   const lastElement = split.pop() as string;
   const markdown = await getArticleMarkdown(lastElement);
   const data: any = await getUserArticles();
+  const info = await getArticleInfo(lastElement);
+  const contentWithoutTitle: any = removeTitle(info.title, markdown);
 
   return (
     <>
@@ -73,7 +80,11 @@ export default async function Page({
         </View>
       </Hidden>
       <LayoutContent noPadding={true}>
-        <MdxContent source={markdown} parentUrl="/article" />
+        <MdxContent
+          info={info}
+          source={contentWithoutTitle}
+          parentUrl="/article"
+        />
       </LayoutContent>
     </>
   );

@@ -38,9 +38,10 @@ export const getUserArticles = async () => {
   try {
     const response = await fetch(`${HOST}/user/${USER_ID}/articles`, options);
     const result = await response.json();
+    // const articleIds = result.associated_articles.slice(0, 5);
     const articleIds = result.associated_articles;
     return await Promise.all(
-      articleIds.map(async (id: string) => getArticleInfo(id))
+      articleIds.map(async (id: string) => getArticleInfo(id)),
     );
   } catch (error) {
     logError(error);

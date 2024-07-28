@@ -70,9 +70,11 @@ const components: MDXComponents = {
   },
 };
 
-const CustomMDX = async (props: MDXRemoteProps & { parentUrl?: string }) => {
-  const { source, parentUrl } = props;
-  const { frontmatter, content } = await compileMDX<{
+const CustomMDX = async (
+  props: MDXRemoteProps & { parentUrl?: string; info: any },
+) => {
+  const { source, parentUrl, info } = props;
+  const { content } = await compileMDX<{
     title: string;
     published_at: string;
   }>({
@@ -82,11 +84,7 @@ const CustomMDX = async (props: MDXRemoteProps & { parentUrl?: string }) => {
   });
 
   return (
-    <Article
-      title={frontmatter.title}
-      date={frontmatter.published_at}
-      parentUrl={parentUrl}
-    >
+    <Article title={info.title} date={info.published_at} parentUrl={parentUrl}>
       {content}
     </Article>
   );
