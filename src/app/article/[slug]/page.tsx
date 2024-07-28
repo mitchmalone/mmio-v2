@@ -79,7 +79,7 @@ export default async function Page({
           </ScrollArea>
         </View>
       </Hidden>
-      <LayoutContent noPadding={true}>
+      <LayoutContent href={info.url} isLocked={info.is_locked} noPadding={true}>
         <MdxContent
           info={info}
           source={contentWithoutTitle}
