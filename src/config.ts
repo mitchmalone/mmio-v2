@@ -3,12 +3,11 @@ import {
   Feather,
   Twitter,
   GitHub,
-  Figma,
-  CheckSquare,
-  Mic,
+  Linkedin,
+  Camera,
+  Edit2,
   Briefcase,
   Layers,
-  Package,
 } from "react-feather";
 
 const config = {
@@ -46,24 +45,19 @@ const config = {
       title: "Projects",
       items: [
         {
-          icon: Package,
-          title: "Reshaped",
-          href: "https://reshaped.so",
-        },
-        {
-          icon: CheckSquare,
-          title: "Design System Checklist",
-          href: "https://www.designsystemchecklist.com",
-        },
-        {
-          icon: Mic,
-          title: "Design System Interviews",
-          href: "https://reshaped.so/blog",
+          icon: Edit2,
+          title: "Medium Articles",
+          href: "https://mitchmalone.medium.com",
         },
         {
           icon: Briefcase,
-          title: "Formaat Design",
-          href: "https://formaat.design",
+          title: "Nomad More",
+          href: "https://nomadmo.re",
+        },
+        {
+          icon: Camera,
+          title: "Photography",
+          href: "https://mitchmalone.photography",
         },
       ],
     },
@@ -71,19 +65,19 @@ const config = {
       title: "Online",
       items: [
         {
+          icon: Linkedin,
+          title: "Linkedin",
+          href: "https://www.linkedin.com/in/mitchmalone",
+        },
+        {
           icon: Twitter,
           title: "Twitter",
-          href: "https://twitter.com/blvdmitry",
+          href: "https://twitter.com/mitch__malone",
         },
         {
           icon: GitHub,
           title: "GitHub",
-          href: "https://github.com/formaat-design",
-        },
-        {
-          icon: Figma,
-          title: "Figma",
-          href: "https://www.figma.com/@reshaped",
+          href: "https://github.com/mitchmalone",
         },
       ],
     },
