@@ -9,7 +9,7 @@ import ArticleBio from "@/components/ArticleBio";
 import Article from "@/components/Article";
 import s from "./MdxContent.module.css";
 
-const components: MDXComponents = {
+export const components: MDXComponents = {
   Bio: ArticleBio,
   strong: ({ children }) => {
     return (
@@ -70,7 +70,7 @@ const components: MDXComponents = {
   },
 };
 
-const CustomMDX = async (
+export const CustomMDX = async (
   props: MDXRemoteProps & { parentUrl?: string; info: any },
 ) => {
   const { source, parentUrl, info } = props;
@@ -89,5 +89,3 @@ const CustomMDX = async (
     </Article>
   );
 };
-
-export default CustomMDX;

@@ -3,14 +3,14 @@
 import React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { components } from "@/components/MdxContent";
-import StackMDX from "@/posts/stack.mdx";
+import IndexMDX from "@/posts/index.mdx";
 
-const Page = () => {
+const IndexPageContent = () => {
   return (
     <MDXProvider components={components}>
-      <StackMDX />
+      <IndexMDX />
     </MDXProvider>
   );
 };
 
-export default Page;
+export default IndexPageContent;

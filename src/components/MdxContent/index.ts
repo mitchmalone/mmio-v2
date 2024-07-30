@@ -1,1 +1,1 @@
-export { default } from "./MdxContent";
+export { components, CustomMDX as default } from "./MdxContent";

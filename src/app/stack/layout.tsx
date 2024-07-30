@@ -1,12 +1,17 @@
-import IndexPageContent from "@/components/IndexPageContent";
+import React from "react";
+import { Container, View } from "reshaped";
 import LayoutContent from "@/components/LayoutContent";
 import LayoutSubmenu from "@/components/LayoutSubmenu";
-import { Container, View } from "reshaped";
+import config from "@/config";
 
-export default function Home() {
+const Page = ({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) => {
   return (
     <div className="stacking">
-      <LayoutSubmenu />
+      <LayoutSubmenu title={config.menu[2].title} />
 
       <LayoutContent noPadding>
         <Container width="760px">
@@ -16,12 +21,12 @@ export default function Home() {
             paddingBlock={{ s: 20, l: 15 }}
             as="main"
           >
-            <View gap={1}>
-              <IndexPageContent />
-            </View>
+            <View gap={1}>{children}</View>
           </View>
         </Container>
       </LayoutContent>
     </div>
   );
-}
+};
+
+export default Page;
