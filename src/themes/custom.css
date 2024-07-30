@@ -65,3 +65,9 @@
     width: 92%;
   }
 }
+
+@media screen and (min-width: 1280px) {
+  .stacking {
+    width: calc(100% - 287px);
+  }
+}
