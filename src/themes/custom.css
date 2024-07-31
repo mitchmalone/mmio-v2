@@ -52,6 +52,7 @@
     position: absolute;
     height: 45px !important;
     border-bottom: 1px solid var(--rs-color-border-neutral-faded);
+    overflow: auto;
     z-index: 90;
   }
 
