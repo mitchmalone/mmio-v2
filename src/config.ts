@@ -40,7 +40,6 @@ const config = {
       title: "Stack",
       href: "/stack",
     },
-
     {
       title: "Projects",
       items: [
