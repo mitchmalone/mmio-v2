@@ -17,11 +17,11 @@ const config = {
     thumbnailUrl: "/img/logo.svg",
   },
   meta: {
-    url: "https://reshaped-blog-starter.vercel.app",
-    title: "Reshaped",
-    description: "Blog starter built on top of Next.js and Reshaped",
+    url: "https://mitchmalone.io",
+    title: "Mitch Malone",
+    description: "Product and Engineering Leader based in Tasmania, Australia.",
     twitter: {
-      username: "blvdmitry",
+      username: "mitch__malone",
     },
   },
   menu: [
