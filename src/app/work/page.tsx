@@ -34,7 +34,7 @@ export default async function Page() {
                 </Hidden>
                 <View.Item grow>
                   <Text variant="body-3" weight="bold">
-                    {config.menu[1].title}
+                    {config.menu[2].title}
                   </Text>
                 </View.Item>
               </View>
