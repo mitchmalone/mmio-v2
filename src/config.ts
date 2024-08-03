@@ -5,9 +5,10 @@ import {
   GitHub,
   Linkedin,
   Camera,
-  Edit2,
   Briefcase,
   Layers,
+  PenTool,
+  Send,
 } from "react-feather";
 
 const config = {
@@ -36,6 +37,11 @@ const config = {
       href: "/article",
     },
     {
+      icon: Briefcase,
+      title: "Work",
+      href: "/work",
+    },
+    {
       icon: Layers,
       title: "Stack",
       href: "/stack",
@@ -44,12 +50,12 @@ const config = {
       title: "Projects",
       items: [
         {
-          icon: Edit2,
+          icon: PenTool,
           title: "Medium Articles",
           href: "https://mitchmalone.medium.com",
         },
         {
-          icon: Briefcase,
+          icon: Send,
           title: "Nomad More",
           href: "https://nomadmo.re",
         },
