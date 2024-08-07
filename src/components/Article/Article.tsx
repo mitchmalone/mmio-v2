@@ -20,14 +20,23 @@ type Props = {
   children: ReactNode;
   title?: string;
   date?: string;
+  intro?: string;
+  dateRange?: [string, string];
   parentUrl?: string;
 };
 
 const Article = (props: Props) => {
-  const { children, title, date, parentUrl } = props;
+  const { children, title, date, intro, dateRange, parentUrl } = props;
   const { activate, deactivate, active } = useToggle();
   const titleRef = React.useRef<HTMLHeadingElement | null>(null);
   const headerRef = React.useRef<HTMLDivElement | null>(null);
+  const dateRangeDisplay = (dateRange: any) => {
+    if (!dateRange) return undefined;
+
+    if (!dateRange[1]) return formatDate(dateRange[0]);
+
+    return `${formatDate(dateRange[0])} - ${formatDate(dateRange[1])}`;
+  };
 
   React.useEffect(() => {
     if (!titleRef.current || !headerRef.current) return;
@@ -106,7 +115,19 @@ const Article = (props: Props) => {
                   {formatDate(date)}
                 </Text>
               )}
+              {dateRange && (
+                <Text variant="body-3" color="neutral-faded">
+                  {dateRangeDisplay(dateRange)}
+                </Text>
+              )}
             </View>
+          )}
+          {intro && (
+            <div className={s.content}>
+              <Text color="neutral-faded" variant="body-2">
+                {intro}
+              </Text>
+            </div>
           )}
           <div className={s.content}>{children}</div>
         </View>

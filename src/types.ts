@@ -22,3 +22,21 @@ export type ArticleInfo = {
   is_shortform: boolean;
   top_highlight: string;
 };
+
+export type WorkInfo = {
+  name: string;
+  intro: string;
+  titlelogo: string[];
+  date: {
+    start: string;
+    end: string | null;
+    zone: string | null;
+  };
+  titlecolor: string;
+  pagebg: string[];
+  category: string;
+  url: string | null;
+  logowhite: string[];
+  titleimg: string[];
+  inverted: boolean;
+};

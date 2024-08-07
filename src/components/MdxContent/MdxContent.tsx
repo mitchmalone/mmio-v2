@@ -77,6 +77,8 @@ export const CustomMDX = async (
   const { content } = await compileMDX<{
     title: string;
     published_at: string;
+    intro: string;
+    date_range: [string, string];
   }>({
     source,
     options: { parseFrontmatter: true },
@@ -84,7 +86,13 @@ export const CustomMDX = async (
   });
 
   return (
-    <Article title={info.title} date={info.published_at} parentUrl={parentUrl}>
+    <Article
+      title={info.title}
+      date={info.published_at}
+      intro={info.intro}
+      dateRange={info.date_range}
+      parentUrl={parentUrl}
+    >
       {content}
     </Article>
   );
