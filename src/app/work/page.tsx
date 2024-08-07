@@ -1,13 +1,14 @@
 import { Hidden, ScrollArea, View, Text } from "reshaped";
+import slugify from "slugify";
 import ArticleItem from "@/components/ArticleItem";
 import LayoutMenuModal from "@/components/LayoutMenuModal";
-import { getUserArticles } from "@/utils/medium_api";
-import { ArticleInfo } from "@/types";
+import { getAllFrontmatters } from "@/utils/github_api";
 import LayoutSubmenu from "@/components/LayoutSubmenu";
 import config from "@/config";
 
 export default async function Page() {
-  const data: any = await getUserArticles();
+  const res: any = await getAllFrontmatters();
+  const data = res.map(({ data }: any) => data);
 
   return (
     <>
@@ -26,7 +27,11 @@ export default async function Page() {
           height="100%"
           backgroundColor="elevation-base"
         >
-          <ScrollArea scrollbarDisplay="hover" className="ct--divider">
+          <ScrollArea
+            scrollbarDisplay="hover"
+            className="ct--divider"
+            height="100vh"
+          >
             <View padding={{ s: 4, l: 6 }} paddingBlock={3} gap={6}>
               <View direction="row" gap={4} align="center">
                 <Hidden hide={{ s: false, l: true }}>
@@ -40,14 +45,15 @@ export default async function Page() {
               </View>
 
               <View gap={1}>
-                {data.map((article: ArticleInfo) => {
-                  const articleHref = `/article/${article.unique_slug}`;
+                {data.map((work: any) => {
+                  const workSlug = slugify(work.name, { lower: true });
+                  const workHref = `/work/${workSlug}`;
                   return (
                     <ArticleItem
-                      key={articleHref}
-                      title={article.title}
-                      date={article.published_at}
-                      href={articleHref}
+                      key={workHref}
+                      title={work.name}
+                      date={work.date.start}
+                      href={workHref}
                     />
                   );
                 })}
