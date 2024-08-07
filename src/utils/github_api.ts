@@ -79,6 +79,10 @@ export const getAllFrontmatters = async () => {
       const { data: nextData } = next;
       // @ts-ignore
       return new Date(nextData.date.start) - new Date(prevData.date.start);
+    })
+    .filter((item: any) => {
+      const itemName = item.data.name;
+      return !itemName.includes(":");
     });
 };
 
