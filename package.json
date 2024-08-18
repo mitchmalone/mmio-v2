@@ -26,7 +26,7 @@
     "clone:dev": "nodemon --env-file=.env.local prebuild.mjs",
     "predev": "npm run clone",
     "dev": "next dev",
-    "prebuild": "npm run clone",
+    "prebuild": "node prebuild.mjs",
     "build": "next build",
     "build:themes": "reshaped theming --output ./src/themes",
     "start": "next start",
