@@ -1,14 +1,13 @@
 import { Hidden, ScrollArea, View, Text } from "reshaped";
-import slugify from "slugify";
 import ArticleItem from "@/components/ArticleItem";
 import LayoutMenuModal from "@/components/LayoutMenuModal";
 import { getAllFrontmatters } from "@/utils/github_api";
+import { getWorksDirContents } from "@/utils/markdown_api";
 import LayoutSubmenu from "@/components/LayoutSubmenu";
 import config from "@/config";
 
 export default async function Page() {
-  const res: any = await getAllFrontmatters();
-  const data = res.map(({ data }: any) => data);
+  const data: any = await getWorksDirContents();
 
   return (
     <>
@@ -46,13 +45,12 @@ export default async function Page() {
 
               <View gap={1}>
                 {data.map((work: any) => {
-                  const workSlug = slugify(work.name, { lower: true });
-                  const workHref = `/work/${workSlug}`;
+                  const workHref = `/work/${work.slug}`;
                   return (
                     <ArticleItem
                       key={workHref}
-                      title={work.name}
-                      date={work.date.start}
+                      title={work.title}
+                      date={work.startDate}
                       href={workHref}
                     />
                   );

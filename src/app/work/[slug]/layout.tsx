@@ -3,8 +3,8 @@ import ArticleItem from "@/components/ArticleItem";
 import LayoutContent from "@/components/LayoutContent";
 import LayoutMenuModal from "@/components/LayoutMenuModal";
 import { getAllFrontmatters } from "@/utils/github_api";
+import slugify from "@/utils/slugify";
 import config from "@/config";
-import slugify from "slugify";
 
 export default async function Page({
   children,
@@ -49,7 +49,7 @@ export default async function Page({
 
               <View gap={1}>
                 {data.map((work: any) => {
-                  const workSlug = slugify(work.name, { lower: true });
+                  const workSlug = slugify(work.name);
                   const workHref = `/work/${workSlug}`;
                   return (
                     <ArticleItem

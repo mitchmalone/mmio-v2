@@ -1,6 +1,6 @@
 import { Octokit } from "@octokit/rest";
 import matter from "gray-matter";
-import slugify from "slugify";
+import slugify from "./slugify";
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
@@ -79,17 +79,13 @@ export const getAllFrontmatters = async () => {
       const { data: nextData } = next;
       // @ts-ignore
       return new Date(nextData.date.start) - new Date(prevData.date.start);
-    })
-    .filter((item: any) => {
-      const itemName = item.data.name;
-      return !itemName.includes(":");
     });
 };
 
 export const getFrontmatter = async (slug: string) => {
   const allFrontmatters = await getAllFrontmatters();
   const item = allFrontmatters.find((item) => {
-    const itemSlug = slugify(item.data.name, { lower: true });
+    const itemSlug = slugify(item.data.name);
     return itemSlug === slug;
   });
 

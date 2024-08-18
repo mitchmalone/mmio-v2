@@ -8,6 +8,7 @@ import { default as slugger } from "slugify";
  */
 const slugify = (str: string) => {
   return slugger(str, {
+    remove: /[*+~.()'"!:@]/g,
     lower: true,
     strict: true,
   });

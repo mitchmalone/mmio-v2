@@ -79,6 +79,7 @@ export const CustomMDX = async (
     published_at: string;
     intro: string;
     date_range: [string, string];
+    image?: string;
   }>({
     source,
     options: { parseFrontmatter: true },
@@ -91,6 +92,7 @@ export const CustomMDX = async (
       date={info.published_at}
       intro={info.intro}
       dateRange={info.date_range}
+      image={info.image}
       parentUrl={parentUrl}
     >
       {content}

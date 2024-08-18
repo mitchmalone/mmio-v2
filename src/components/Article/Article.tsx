@@ -10,6 +10,7 @@ import {
   Hidden,
   ActionBar,
   Button,
+  Image,
   useToggle,
 } from "reshaped";
 import LayoutMenuModal from "@/components/LayoutMenuModal";
@@ -22,11 +23,12 @@ type Props = {
   date?: string;
   intro?: string;
   dateRange?: [string, string];
+  image?: string;
   parentUrl?: string;
 };
 
 const Article = (props: Props) => {
-  const { children, title, date, intro, dateRange, parentUrl } = props;
+  const { children, title, date, intro, dateRange, image, parentUrl } = props;
   const { activate, deactivate, active } = useToggle();
   const titleRef = React.useRef<HTMLHeadingElement | null>(null);
   const headerRef = React.useRef<HTMLDivElement | null>(null);
@@ -127,6 +129,11 @@ const Article = (props: Props) => {
               <Text color="neutral-faded" variant="body-2">
                 {intro}
               </Text>
+            </div>
+          )}
+          {image && (
+            <div className={s.content}>
+              <Image src={image} alt={title || ""} borderRadius="medium" />
             </div>
           )}
           <div className={s.content}>{children}</div>
