@@ -35,5 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# case studies contents
+# works contents
+/public/work
 /src/posts/case-studies

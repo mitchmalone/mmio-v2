@@ -66,20 +66,32 @@ const cloneCaseStudies = async () => {
       const itemContentResultArray = itemContentResult.data;
 
       // Slugify the title
-      const folderName = slugify(name, { lower: true });
+      const folderName = slugify(name, {
+        lower: true,
+        strict: true,
+      });
 
-      // Define the folder path
-      const folderPath = path.join(
+      // Define the folder path for markdowns
+      const markdownFolderPath = path.join(
         path.resolve(),
         "src",
         "posts",
         "case-studies",
+      );
+
+      const imageFolderPath = path.join(
+        path.resolve(),
+        "public",
+        "work",
         folderName,
       );
 
       // Check if folder exists, if not, create it
-      if (!fs.existsSync(folderPath)) {
-        fs.mkdirSync(folderPath, { recursive: true });
+      if (!fs.existsSync(markdownFolderPath)) {
+        fs.mkdirSync(markdownFolderPath, { recursive: true });
+      }
+      if (!fs.existsSync(imageFolderPath)) {
+        fs.mkdirSync(imageFolderPath, { recursive: true });
       }
 
       // Download all files from item content result
@@ -87,14 +99,16 @@ const cloneCaseStudies = async () => {
         const { name: itemName, download_url: itemDownloadUrl } = item;
 
         // Define the file output path
-        const itemFilePath = path.join(folderPath, itemName);
+        const markdownItemFilePath = path.join(markdownFolderPath, itemName);
+        const imageItemFilePath = path.join(imageFolderPath, itemName);
 
         // Download the file
         try {
-          await downloadFile(itemDownloadUrl, itemFilePath);
-          console.log(
-            `\x1b[36m File downloaded successfully to ${itemFilePath} \x1b[0m`,
-          );
+          const targetFolder = itemName.endsWith(".md")
+            ? markdownItemFilePath
+            : imageItemFilePath;
+          await downloadFile(itemDownloadUrl, targetFolder);
+          console.log(`\x1b[36m "${itemName}" successfully downloaded \x1b[0m`);
         } catch (error) {
           console.error(
             `\x1b[41m Failed to download file: ${error.message} \x1b[0m`,
