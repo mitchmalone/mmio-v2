@@ -1,36 +1,17 @@
 import { Hidden, ScrollArea, View, Text } from "reshaped";
 import ArticleItem from "@/components/ArticleItem";
-import MdxContent from "@/components/MdxContent";
-import LayoutContent from "@/components/LayoutContent";
 import LayoutMenuModal from "@/components/LayoutMenuModal";
-import {
-  getUserArticles,
-  getArticleMarkdown,
-  getArticleInfo,
-} from "@/utils/medium_api";
+import { getUserArticles } from "@/utils/medium_api";
 import { ArticleInfo } from "@/types";
-import removeTitle from "@/utils/remove_title";
+import LayoutSubmenu from "@/components/LayoutSubmenu";
+import config from "@/config";
 
-export async function generateStaticParams() {
+export default async function Page() {
   const data: any = await getUserArticles();
-  return data.map((article: ArticleInfo) => ({
-    slug: article.unique_slug,
-  }));
-}
-
-export default async function Page({
-  params,
-}: Readonly<{ params: { slug: string } }>) {
-  const { slug } = params;
-  const split = slug.split("-");
-  const lastElement = split.pop() as string;
-  const markdown = await getArticleMarkdown(lastElement);
-  const data: any = await getUserArticles();
-  const info = await getArticleInfo(lastElement);
-  const contentWithoutTitle: any = removeTitle(info.title, markdown);
 
   return (
     <>
+      <LayoutSubmenu title={config.menu[1].title} data={data} />
       <Hidden
         hide={{
           /**
@@ -57,14 +38,14 @@ export default async function Page({
                 </Hidden>
                 <View.Item grow>
                   <Text variant="body-3" weight="bold">
-                    Writing
+                    {config.menu[1].title}
                   </Text>
                 </View.Item>
               </View>
 
               <View gap={1}>
                 {data.map((article: ArticleInfo) => {
-                  const articleHref = `/article/${article.unique_slug}`;
+                  const articleHref = `/insights/${article.unique_slug}`;
                   return (
                     <ArticleItem
                       key={articleHref}
@@ -79,13 +60,6 @@ export default async function Page({
           </ScrollArea>
         </View>
       </Hidden>
-      <LayoutContent href={info.url} isLocked={info.is_locked} noPadding={true}>
-        <MdxContent
-          info={info}
-          source={contentWithoutTitle}
-          parentUrl="/article"
-        />
-      </LayoutContent>
     </>
   );
 }
