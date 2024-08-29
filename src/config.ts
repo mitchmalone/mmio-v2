@@ -34,12 +34,12 @@ const config = {
     {
       icon: Feather,
       title: "Writing",
-      href: "/article",
+      href: "/insights",
     },
     {
       icon: Briefcase,
       title: "Work",
-      href: "/work",
+      href: "/case-studies",
     },
     {
       icon: Layers,

@@ -1,18 +1,33 @@
 import { Hidden, ScrollArea, View, Text } from "reshaped";
 import ArticleItem from "@/components/ArticleItem";
+import MdxContent from "@/components/MdxContent";
 import LayoutContent from "@/components/LayoutContent";
 import LayoutMenuModal from "@/components/LayoutMenuModal";
-import { getAllFrontmatters } from "@/utils/github_api";
-import slugify from "@/utils/slugify";
-import config from "@/config";
+import {
+  getUserArticles,
+  getArticleMarkdown,
+  getArticleInfo,
+} from "@/utils/medium_api";
+import { ArticleInfo } from "@/types";
+import removeTitle from "@/utils/remove_title";
+
+export async function generateStaticParams() {
+  const data: any = await getUserArticles();
+  return data.map((article: ArticleInfo) => ({
+    slug: article.unique_slug,
+  }));
+}
 
 export default async function Page({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const res: any = await getAllFrontmatters();
-  const data = res.map(({ data }: any) => data);
+  params,
+}: Readonly<{ params: { slug: string } }>) {
+  const { slug } = params;
+  const split = slug.split("-");
+  const lastElement = split.pop() as string;
+  const markdown = await getArticleMarkdown(lastElement);
+  const data: any = await getUserArticles();
+  const info = await getArticleInfo(lastElement);
+  const contentWithoutTitle: any = removeTitle(info.title, markdown);
 
   return (
     <>
@@ -42,21 +57,20 @@ export default async function Page({
                 </Hidden>
                 <View.Item grow>
                   <Text variant="body-3" weight="bold">
-                    {config.menu[2].title}
+                    Writing
                   </Text>
                 </View.Item>
               </View>
 
               <View gap={1}>
-                {data.map((work: any) => {
-                  const workSlug = slugify(work.name);
-                  const workHref = `/work/${workSlug}`;
+                {data.map((article: ArticleInfo) => {
+                  const articleHref = `/insights/${article.unique_slug}`;
                   return (
                     <ArticleItem
-                      key={workHref}
-                      title={work.name}
-                      date={work.date.start}
-                      href={workHref}
+                      key={articleHref}
+                      title={article.title}
+                      date={article.published_at}
+                      href={articleHref}
                     />
                   );
                 })}
@@ -65,7 +79,13 @@ export default async function Page({
           </ScrollArea>
         </View>
       </Hidden>
-      <LayoutContent noPadding={true}>{children}</LayoutContent>
+      <LayoutContent href={info.url} isLocked={info.is_locked} noPadding={true}>
+        <MdxContent
+          info={info}
+          source={contentWithoutTitle}
+          parentUrl="/insights"
+        />
+      </LayoutContent>
     </>
   );
 }

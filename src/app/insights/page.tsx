@@ -45,7 +45,7 @@ export default async function Page() {
 
               <View gap={1}>
                 {data.map((article: ArticleInfo) => {
-                  const articleHref = `/article/${article.unique_slug}`;
+                  const articleHref = `/insights/${article.unique_slug}`;
                   return (
                     <ArticleItem
                       key={articleHref}

@@ -13,7 +13,7 @@ export function replaceImageUrls(tree: Node, path: string) {
     if (node.url) {
       const imageUrl = node.url.startsWith("./") ? node.url.slice(2) : node.url;
       // Modify the image URL as needed
-      node.url = `/work/${path}/${imageUrl}`;
+      node.url = `/case-studies/${path}/${imageUrl}`;
     }
   });
 }

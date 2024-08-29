@@ -1,33 +1,18 @@
 import { Hidden, ScrollArea, View, Text } from "reshaped";
 import ArticleItem from "@/components/ArticleItem";
-import MdxContent from "@/components/MdxContent";
 import LayoutContent from "@/components/LayoutContent";
 import LayoutMenuModal from "@/components/LayoutMenuModal";
-import {
-  getUserArticles,
-  getArticleMarkdown,
-  getArticleInfo,
-} from "@/utils/medium_api";
-import { ArticleInfo } from "@/types";
-import removeTitle from "@/utils/remove_title";
-
-export async function generateStaticParams() {
-  const data: any = await getUserArticles();
-  return data.map((article: ArticleInfo) => ({
-    slug: article.unique_slug,
-  }));
-}
+import { getAllFrontmatters } from "@/utils/github_api";
+import slugify from "@/utils/slugify";
+import config from "@/config";
 
 export default async function Page({
-  params,
-}: Readonly<{ params: { slug: string } }>) {
-  const { slug } = params;
-  const split = slug.split("-");
-  const lastElement = split.pop() as string;
-  const markdown = await getArticleMarkdown(lastElement);
-  const data: any = await getUserArticles();
-  const info = await getArticleInfo(lastElement);
-  const contentWithoutTitle: any = removeTitle(info.title, markdown);
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const res: any = await getAllFrontmatters();
+  const data = res.map(({ data }: any) => data);
 
   return (
     <>
@@ -57,20 +42,21 @@ export default async function Page({
                 </Hidden>
                 <View.Item grow>
                   <Text variant="body-3" weight="bold">
-                    Writing
+                    {config.menu[2].title}
                   </Text>
                 </View.Item>
               </View>
 
               <View gap={1}>
-                {data.map((article: ArticleInfo) => {
-                  const articleHref = `/article/${article.unique_slug}`;
+                {data.map((work: any) => {
+                  const workSlug = slugify(work.name);
+                  const workHref = `/case-studies/${workSlug}`;
                   return (
                     <ArticleItem
-                      key={articleHref}
-                      title={article.title}
-                      date={article.published_at}
-                      href={articleHref}
+                      key={workHref}
+                      title={work.name}
+                      date={work.date.start}
+                      href={workHref}
                     />
                   );
                 })}
@@ -79,13 +65,7 @@ export default async function Page({
           </ScrollArea>
         </View>
       </Hidden>
-      <LayoutContent href={info.url} isLocked={info.is_locked} noPadding={true}>
-        <MdxContent
-          info={info}
-          source={contentWithoutTitle}
-          parentUrl="/article"
-        />
-      </LayoutContent>
+      <LayoutContent noPadding={true}>{children}</LayoutContent>
     </>
   );
 }
