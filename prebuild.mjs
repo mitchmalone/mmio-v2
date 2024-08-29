@@ -86,7 +86,7 @@ const cloneCaseStudies = async () => {
     const imageFolderPath = path.join(
       path.resolve(),
       "public",
-      "work",
+      "case-studies",
       folderName,
     );
 

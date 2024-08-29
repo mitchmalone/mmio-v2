@@ -45,7 +45,7 @@ export default async function Page() {
 
               <View gap={1}>
                 {data.map((work: any) => {
-                  const workHref = `/work/${work.slug}`;
+                  const workHref = `/case-studies/${work.slug}`;
                   return (
                     <ArticleItem
                       key={workHref}

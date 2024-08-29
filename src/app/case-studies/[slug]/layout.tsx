@@ -50,7 +50,7 @@ export default async function Page({
               <View gap={1}>
                 {data.map((work: any) => {
                   const workSlug = slugify(work.name);
-                  const workHref = `/work/${workSlug}`;
+                  const workHref = `/case-studies/${workSlug}`;
                   return (
                     <ArticleItem
                       key={workHref}

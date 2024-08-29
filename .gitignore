@@ -36,5 +36,5 @@ yarn-error.log*
 next-env.d.ts
 
 # works contents
-/public/work
+/public/case-studies
 /src/posts/case-studies

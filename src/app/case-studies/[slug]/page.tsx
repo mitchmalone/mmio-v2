@@ -25,11 +25,11 @@ export default async function Page({
           intro: data.frontmatter.intro,
           date_range: [data.frontmatter.startDate, data.frontmatter.endDate],
           image: data.frontmatter.image
-            ? `/work/${slug}/${data.frontmatter.image}`
+            ? `/case-studies/${slug}/${data.frontmatter.image}`
             : null,
         }}
         source={markdownContent}
-        parentUrl="/work"
+        parentUrl="/case-studies"
       />
     </>
   );

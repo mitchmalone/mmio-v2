@@ -39,7 +39,7 @@ const config = {
     {
       icon: Briefcase,
       title: "Work",
-      href: "/work",
+      href: "/case-studies",
     },
     {
       icon: Layers,
